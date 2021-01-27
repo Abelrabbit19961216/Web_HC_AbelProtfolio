@@ -3,4 +3,9 @@ $("#banner").slick({
     autoplay:true,
     autoplaySpeed: 1500
 });
+
+$("#works").slick({
+    slidesToShow: 3,
+    slidesToScroll:2,
+});
     
