@@ -1,72 +1,123 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Passion+One:wght@400&display=swap");
 
-$color-gray: rgba(175, 193, 204, 0.103);
-$color-wite: #e9e9e9;
-$color-black:#252525;
-$trxt-shadow:0 5px 5px rgba(0,0,0,0.45);
-$box-shadow:0 5px 5px rgba(0,0,0,0.5);
+$color-gray: #aaa;
+$color-white: #f8f8f8;
+$color-black: #252525;
+$text-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
+$box-shawod: 0 5px 7px rgba(0, 0, 0, 0.2);
+$tablet: 1024px; // 平板尺寸
+$mobile: 767px; // 手機尺寸
 
 * {
+    margin: 0;
     padding: 0;
-    margin: 0px;
-    font-size: 微軟正黑體;
+    font-family: 微軟正黑體;
+    box-sizing: border-box;
+}
+
+// 導覽列
+#menu {
+    background-image: url(./img/menu.png);
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: none;
+
+    @media screen and (max-width: $tablet) {
+        display: block;
+        margin: 0 10px 0 auto;
+    }
+
+    @media screen and (max-width: $mobile) {
+        margin: 0 20px 0 auto;
+        background-size: cover;
+        width: 40px;
+        height: 40px;
+    }
 }
 
 nav {
     display: grid;
     grid-template-columns: 15% auto 15%;
     text-align: center;
-    background: $color-gray;
-    padding: 30px;
-    color: $color-wite;
+    background: $color-white;
+    padding: 35px 0;
+    box-shadow: $box-shawod;
     position: fixed;
     z-index: 3;
     width: 100%;
-    box-shadow: $box-shadow;
+
+    @media screen and (max-width: $tablet) {
+        grid-template-columns: 100% 0;
+    }
+
+    @media screen and (max-width: $mobile) {
+        padding: 20px 0;
+    }
 
     #link {
-        a{
-            color: #000;
+        @media screen and (max-width: $tablet) {
+            display: none;
+        }
+
+        a {
+            color: $color-black;
             text-decoration: none;
-            padding: 0 30px;
-            transition: 0.5s;
-            display: inline-block;
+            font-size: 16px;
+            padding: 0 60px;
+            transition: 0.3s;
+            display: inline-block; // 行內區塊元素 不會自己一行必且可以縮放
+            vertical-align: 10px;
 
             &:hover {
-                font-size: 20px;
+                color: $color-gray;
+                transform: scale(1.2);
             }
         }
     }
 
     #social {
-        a{
-        transition: 0.5s;
-        padding: 0 10px; 
-
-        &:hover{
-            filter: invert(85%) sepia(2%) saturate(7323%) hue-rotate(96deg) brightness(111%) contrast(106%);
+        @media screen and (max-width: $tablet) {
+            display: none;
         }
 
+        a {
+            transition: 0.3s;
+            padding: 0 10px;
 
+            &:hover {
+                filter: invert(65%) sepia(0%) saturate(2628%) hue-rotate(143deg) brightness(107%) contrast(86%);
+                filter: invert(65%) sepia(0%) saturate(2628%) hue-rotate(143deg) brightness(107%) contrast(86%);
+            }
+
+            img {
+                width: 20px;
+                vertical-align: -20px;
+            }
         }
-       
-    
     }
 }
 
 .logo {
-    font-weight: 900;
-    font-size: 60px;
-    transition: 0.5s;
-    font-family:'Oxygen', sans-serif  ;
+    font-weight: 100;
+    transition: 0.5s !important;
+    font-size: 36px !important;
+    font-family: "Passion One", cursive;
+    letter-spacing: 3px;
+    padding-left: 3px;
 
     &:hover {
-        font-size: 36px !important;
-    
-    }   
+        transform: scale(1.3) !important;
+    }
+
+    span {
+        font-family: "Passion One", cursive;
+        vertical-align: 3px;
+        font-size: 30px;
+    }
 }
 
-#banner{
+#banner {
     .slick-prev {
         left: 50px;
         z-index: 2;
@@ -80,86 +131,169 @@ nav {
         z-index: 2;
     }
 
+    @for $i from 1 through 3 {
+        .banner#{$i} {
+            background-image: url(./img/banner#{$i}.jpg);
+            height: 100vh;
+            text-align: center;
+            color: $color-white;
 
-@for $i from 1 through 3 {
-     .banner#{$i}{
-        background-image: url(./img/banner#{$i}.jpg);
-        height: 100vh;
-        text-align: center;
-        color: $color-wite;
+            @media screen and (max-width: $tablet) {
+                background-size: cover;
+            }
 
-        &:focus{
-            outline: none;
+            &:focus {
+                outline: none;
+            }
+
+            h1 {
+                padding: 350px 0 50px 20px;
+                font-size: 72px;
+                letter-spacing: 20px;
+                text-shadow: $text-shadow;
+
+                @media screen and (max-width: $tablet) {
+                    padding: 550px 0 50px 20px;
+                }
+
+                @media screen and (max-width: $mobile) {
+                    padding: 380px 0 50px 20px;
+                    font-size: 32px;
+                }
+            }
+
+            h2 {
+                font-size: 24px;
+                text-shadow: $text-shadow;
+
+                @media screen and (max-width: $mobile) {
+                    font-size: 16px;
+                    width: 60%;
+                    margin: 0 auto;
+                    line-height: 2;
+                }
+            }
         }
-
-        h1 {
-            padding: 350px 0 50px 20px;
-            font-size: 72px;
-            letter-spacing: 20px;
-          
-        }
-
-        h2{
-            font-size: 24px;
-            text-shadow: $trxt-shadow;
-        }
-      
-     }
-    
     }
 }
 
-
+// 最新消息
 #news {
     width: 1280px;
     margin: 0 auto;
+    padding: 100px 0;
 
+    @media screen and (max-width: $tablet) {
+        width: 100%;
+        padding: 50px 20px;
+    }
 
     #news-content {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         grid-gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
 
-         .news-card {
-             box-shadow: $box-shadow;
-         }
+        @media screen and (max-width: $mobile) {
+            grid-template-columns: 1fr;
+            grid-gap: 50px;
+        }
 
+        .news-card {
+            box-shadow: $box-shawod;
+        }
 
         img {
-            width:100% ; 
+            width: 100%;
             height: 300px;
-            object-fit: cover;               
+            object-fit: cover;
         }
 
-        h3{
+        h3 {
             text-align: center;
-            padding: 10px;
-        
+            padding: 20px 0 0;
         }
-        p{
+
+        p {
             line-height: 1.5;
             font-size: 14px;
-            padding-bottom: 10px;
+            padding: 20px 30px 30px;
         }
     }
 }
 
+// 最新作品
+#works {
+    width: 1280px;
+    margin: 0 auto;
+    padding: 100px 0;
+    // 溢出：隱藏
+    overflow: hidden;
+
+    @media screen and (max-width: $tablet) {
+        width: 100%;
+    }
+
+    .work-card {
+        text-align: center;
+
+        &:focus {
+            outline: none;
+        }
+
+        img {
+            width: 230px;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+            border-radius: 50%;
+            transition: 0.6s;
+            box-shadow: $box-shawod;
+
+            &:hover {
+                border-radius: 20px;
+            }
+        }
+
+        h2 {
+            padding: 20px 0;
+        }
+
+        small {
+            color: $color-gray;
+        }
+    }
+}
+
+// 聯絡 KID
 form {
-    width: 1280px; 
+    width: 1280px;
     margin: 0 auto;
     padding: 20px 0 100px;
 
-    input {
-        width: 45%;
-        padding: 10px 5px;
+    @media screen and (max-width: $tablet) {
+        width: 100%;
+        padding: 20px 20px 100px;
+    }
 
+    input {
+        width: 49%;
+        padding: 10px;
+
+        @media screen and (max-width: $tablet) {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        // 預設文字 ::placeholder
         &::placeholder {
-            color:  $color-gray;
+            color: $color-gray;
             font-size: 14px;
         }
     }
 
-    input[type=email]{
+    // 利用屬性選取器，語法：元素[屬性=值]
+    input[type="email"] {
         float: right;
     }
 
@@ -170,37 +304,50 @@ form {
         padding: 10px;
 
         &::placeholder {
-            color:$color-black;
+            color: $color-gray;
             font-size: 14px;
         }
     }
 }
 
+footer {
+    background: $color-gray;
+    padding: 50px 0;
+    text-align: center;
+
+    a {
+        text-decoration: none;
+        color: $color-white;
+
+        padding: 20px 0;
+    }
+}
+
+// 統一樣式
+// 按鈕樣式
 .btn {
-    background: black;
-    color: $color-wite;
-    padding: 20px 30px;
+    background: $color-black;
+    color: $color-white;
+    padding: 15px 0;
     display: block;
     margin: 0 auto;
-    width: 80%;
-    font-size: 20px;
-    border: none;
-    border-radius:5px;
+    width: 90%;
+    font-size: 14px;
+    border: 1px solid transparent;
+    border-radius: 5px;
     margin-bottom: 20px;
     transition: 0.5s;
 
-
     &:hover {
-        border: 1px solid $color-gray;
-        background:  $color-wite;
-        color: $color-gray; 
+        border: 1px solid $color-black;
+        background: white;
+        color: $color-black;
     }
-
 }
+// 大標題樣式
 .title-big {
     text-align: center;
-    padding: 10px 0 30px;
-    font-size: 30%;
+    padding: 30px 0 20px;
+    font-size: 30px;
     font-weight: 900;
 }
-
